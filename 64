@@ -1,0 +1,288 @@
+VERSION 4.0.0
+
+______________________________________________//JSON
+{
+  "dependencies": {
+    "expo-av": "~8.7.0",
+    "expo-asset": "~8.2.1",
+    "@expo/vector-icons": "^12.0.0",
+    "react-native-paper": "3.1.1",
+    "react-native-elements": "1.2.7"
+  }
+}
+
+_____________________________________________ //localdb.js
+
+const db = {
+  the: { chunks: ['th', 'e'], phones: ['DH', 'AH'] },
+  of: { chunks: ['o', 'f'], phones: ['AH', 'V'] },
+  and: { chunks: ['a', 'n', 'd'], phones: ['AH', 'N', 'D'] },
+  to: { chunks: ['t', 'o'], phones: ['T', 'UW'] },
+  a: { chunks: ['a'], phones: ['AH'] },
+  in: { chunks: ['i', 'n'], phones: ['IH', 'N'] },
+  for: { chunks: ['f', 'o', 'r'], phones: ['F', 'AO', 'R'] },
+  is: { chunks: ['i', 's'], phones: ['IH', 'Z'] },
+  on: { chunks: ['o', 'n'], phones: ['AA', 'N'] },
+  that: { chunks: ['th', 'a', 't'], phones: ['DH', 'AE', 'T'] },
+  by: { chunks: ['b', 'y'], phones: ['B', 'AY'] },
+  this: { chunks: ['th', 'i', 's'], phones: ['DH', 'IH', 'S'] },
+  with: { chunks: ['w', 'i', 'th'], phones: ['W', 'IH', 'DH'] },
+  i: { chunks: ['i'], phones: ['AY'] },
+  you: { chunks: ['y', 'ou'], phones: ['Y', 'UW'] },
+  it: { chunks: ['i', 't'], phones: ['IH', 'T'] },
+  not: { chunks: ['n', 'o', 't'], phones: ['N', 'AA', 'T'] },
+  or: { chunks: ['o', 'r'], phones: ['AO', 'R'] },
+  be: { chunks: ['b', 'e'], phones: ['B', 'IY'] },
+  are: { chunks: ['a', 're'], phones: ['AA', 'R'] },
+  from: { chunks: ['f', 'r', 'o', 'm'], phones: ['F', 'R', 'AH', 'M'] },
+  at: { chunks: ['a', 't'], phones: ['AE', 'T'] },
+  as: { chunks: ['a', 's'], phones: ['AE', 'Z'] },
+  your: { chunks: ['y', 'ou', 'r'], phones: ['Y', 'AO', 'R'] },
+  all: { chunks: ['a', 'll'], phones: ['AO', 'L'] },
+  have: { chunks: ['h', 'a', 've'], phones: ['HH', 'AE', 'V'] },
+  new: { chunks: ['n', 'ew'], phones: ['N', 'UW'] },
+  more: { chunks: ['m', 'o', 're'], phones: ['M', 'AO', 'R'] },
+  an: { chunks: ['a', 'n'], phones: ['AE', 'N'] },
+  was: { chunks: ['w', 'a', 's'], phones: ['W', 'AA', 'Z'] },
+  we: { chunks: ['w', 'e'], phones: ['W', 'IY'] },
+};
+
+
+______________________________-----_____________ // Imagen
+'https://www.shareicon.net/data/128x128/2015/08/06/80805_face_512x512.png'
+
+______________________________________________ // EJERCICIO
+
+import * as React from 'react';
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+
+
+} from 'react-native';
+import { Header } from 'react-native-elements';
+
+
+
+
+export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+
+
+    };
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <Header
+          backgroundColor={'#9c8210'}
+          centerComponent={{
+            text: 'Monkey Chunky',
+            style: { color: '#fff', fontSize: 20 },
+          }}
+        />
+
+        <Image
+          style={styles.imageIcon}
+          source={{
+            uri:
+
+
+          }}
+        />
+
+        <TextInput
+          style={styles.inputBox}
+          onChangeText={text => {
+            this.setState({ text: text });
+          }}
+          value={this.state.text}
+        />
+        <TouchableOpacity
+          style={styles.goButton}
+          onPress={() => {
+
+
+          }}>
+          <Text style={styles.buttonText}>GO</Text>
+        </TouchableOpacity>
+        <View>
+          {this.state.chunks.map(item => {
+            return (
+              <TouchableOpacity
+
+
+
+              >
+
+
+
+</TouchableOpacity>
+              );
+          })}
+        </View>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#b8b8b8',
+  },
+  inputBox: {
+    marginTop: 50,
+    width: '80%',
+    alignSelf: 'center',
+    height: 40,
+    textAlign: 'center',
+    borderWidth: 4,
+    outline: 'none',
+  },
+  goButton: {
+    width: '50%',
+    height: 55,
+    alignSelf: 'center',
+    padding: 10,
+    margin: 10,
+  },
+  buttonText: {
+    textAlign: 'center',
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  displayText: {
+    textAlign: 'center',
+    fontSize: 30,
+    color: 'white'
+  },
+  imageIcon: {
+
+
+
+
+  },
+  chunkButton:{
+
+
+
+    alignItems: 'center',
+    alignSelf: 'center',
+    borderRadius: 10,
+    margin: 5,
+    backgroundColor: 'red'
+  }
+});
+
+
+
+_________________________________________________// FINAL 
+import * as React from 'react';
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
+import { Header } from 'react-native-elements';
+import db from './localdb';
+import PhonicSoundButton from './components/PhonicSoundButton';
+
+export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      text: '',
+      chunks: [],
+      phonicSounds: [],
+    };
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <Header
+          backgroundColor={'#9c8210'}
+          centerComponent={{
+            text: 'Monkey Chunky',
+            style: { color: '#fff', fontSize: 20 },
+          }}
+        />
+
+        <Image
+          style={styles.imageIcon}
+          source={{
+            uri:
+              'https://www.shareicon.net/data/128x128/2015/08/06/80805_face_512x512.png',
+          }}
+        />
+
+        <TextInput
+          style={styles.inputBox}
+          onChangeText={text => {
+            this.setState({ text: text });
+          }}
+          value={this.state.text}
+        />
+        <TouchableOpacity
+          style={styles.goButton}
+          onPress={() => {
+            this.setState({ chunks: db[this.state.text].chunks });
+            this.setState({ phonicSounds: db[this.state.text].phones });
+          }}>
+          <Text style={styles.buttonText}>GO</Text>
+        </TouchableOpacity>
+        <View>
+          {this.state.chunks.map((item, index) => {
+            return (
+              <PhonicSoundButton
+                wordChunk={this.state.chunks[index]}
+                soundChunk={this.state.phonicSounds[index]}
+              />
+            );
+          })}
+        </View>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#b8b8b8',
+  },
+  inputBox: {
+    marginTop: 50,
+    width: '80%',
+    alignSelf: 'center',
+    height: 40,
+    textAlign: 'center',
+    borderWidth: 4,
+    outline: 'none',
+  },
+  goButton: {
+    width: '50%',
+    height: 55,
+    alignSelf: 'center',
+    padding: 10,
+    margin: 10,
+  },
+  buttonText: {
+    textAlign: 'center',
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  imageIcon: {
+    width: 150,
+    height: 150,
+    marginLeft: 95,
+  }
+});
